@@ -1,6 +1,10 @@
+
+//components
+import Header from "./components/Header"
+
 function App() {
   return (
-    <div className="text-4xl text-orange-500">App</div>
+    <Header />
   )
 }
 
