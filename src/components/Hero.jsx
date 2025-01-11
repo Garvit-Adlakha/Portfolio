@@ -4,6 +4,11 @@ import { OrbitControls } from "@react-three/drei"; // Correct import
 import Developer from "./Developer"; // Ensure Developer is implemented correctly
 import CanvasLoader from "./CanvasLoader"; // Import or define this component
 import PropTypes from "prop-types";
+
+import { ButtonPrimary,ButtonOutline } from "./Button";
+
+
+
 const Hero = ({animationName}) => {
   return (
     <section id="Home" className="pt-28 lg:pt-20">
@@ -30,9 +35,17 @@ const Hero = ({animationName}) => {
             Building Scalable Modern Websites for the future.
           </h2>
           <div className="flex items-center gap-3">
-            ButtonPrimary 
+          <ButtonPrimary
+              label="Download CV"
+              icon="download"        
+            /> 
             
-            ButtonOutline</div>
+            <ButtonOutline
+              href="#about"
+              label="Scroll down"
+              icon="arrow_downward"
+            />
+            </div>
         </div>
         <div className="canvas hidden  lg:block">
           <Canvas className="w-full max-w-[480px] ml-auto bg-gradient-to-t from-sky-400 vi 25% via-sky-400/40 to-65% rounded-[60px] overflow-hidden ">
