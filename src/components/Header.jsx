@@ -1,7 +1,7 @@
 import { Navbar } from "./Navbar";
 import { useState } from "react";
 
-const Header = () => {
+const Header = ({setAnimationName} ) => {
   const [navOpen, setNavOpen] = useState(false);
 
   return (
@@ -10,7 +10,7 @@ const Header = () => {
         <h1>
           <a href="/" className="logo">
             <img
-              src="/images/logo.svg"
+              src="/images/logo.webp"
               width={40}
               height={40}
               alt="Garvit Adlakha Logo"
@@ -26,11 +26,13 @@ const Header = () => {
               {navOpen ? 'close': 'menu'}
               </span>
           </button>
-          <Navbar navOpen={navOpen} />
+          <Navbar navOpen={navOpen} setAnimationName={setAnimationName} />
         </div>
         <a
           href="#contact"
-          className="btn btn-secondary max-md:hidden md:justify-self-end"
+          className="btn btn-secondary max-md:hidden md:justify-self-end transition"
+          onPointerOver={() => setAnimationName('victory')}
+          onPointerOut={() => setAnimationName("idle")}
         >
           Contact me
         </a>
