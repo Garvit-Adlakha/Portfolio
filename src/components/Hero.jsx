@@ -11,17 +11,17 @@ import { ButtonPrimary,ButtonOutline } from "./Button";
 
 const Hero = ({animationName}) => {
   return (
-    <section id="Home" className="pt-28 lg:pt-20">
+    <section id="home" className="pt-28 lg:pt-20 bg-[#244855]">
       <div className="container  items-center lg:grid lg:grid-cols-2 lg:gap-10">
         <div className="">
           <div className="flex items-center gap-3">
             <figure className="img-box w-9 h-9 rounded-lg">
               <img
-                src="/images/avatar-1.jpg"
+                src="/images/avatar.png"
                 width={40}
                 height={40}
                 alt="Garvit Adlakha's portrait"
-                className="img-cover"
+                className="img-cover bg-[#244855]"
               />
             </figure>
             <div className="flex items-center gap-1.5 text-zinc-400 text-sm tracking-wide">
@@ -36,9 +36,10 @@ const Hero = ({animationName}) => {
           </h2>
           <div className="flex items-center gap-3">
           <ButtonPrimary
-              label="Download CV"
-              icon="download"        
-            /> 
+            label="Download CV"
+            icon="download"
+            href="https://drive.google.com/file/d/1bXMVwvAQaJUkktcEQPdo6d3td0wmpXyd/view?usp=sharing"
+          />
             
             <ButtonOutline
               href="#about"
@@ -48,7 +49,9 @@ const Hero = ({animationName}) => {
             </div>
         </div>
         <div className="canvas hidden  lg:block">
-          <Canvas className="w-full max-w-[480px] ml-auto bg-gradient-to-t from-sky-400 vi 25% via-sky-400/40 to-65% rounded-[60px] overflow-hidden ">
+        <Canvas className="w-full max-w-[480px] ml-auto bg-gradient-to-t from-zinc-800/25 via-zinc-800/50 to-65%
+rounded-[60px]  overflow-hidden ">
+
             <ambientLight intensity={0.5} />
             <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
             <directionalLight position={[10, 10, 10]} intensity={1} />

@@ -6,11 +6,10 @@ export const Navbar = ({ navOpen, setAnimationName }) => {
   const activeBox = useRef(null);
 
   const navItems = [
-    { label: "Home", link: "#home", className: "nav-link active", animation: "idle" },
+    { label: "Home", link: "#home", className: "nav-link", animation: "idle" },
     { label: "About", link: "#about", className: "nav-link", animation: "idle" },
     { label: "Work", link: "#work", className: "nav-link", animation: "idle" },
-    { label: "Reviews", link: "#reviews", className: "nav-link", animation: "idle" },
-    { label: "Contact", link: "#contact", className: "nav-link md:hidden md:block", animation: "victory" },
+    { label: "Contact", link: "#contact", className: "nav-link md:hidden md:block", animation: "salute" },
   ];
 
   const initActiveBox = () => {
@@ -31,6 +30,7 @@ export const Navbar = ({ navOpen, setAnimationName }) => {
     initActiveBox();
   };
 
+  
   useEffect(() => {
     const homeLink = document.querySelector('a[href="#home"]');
     if (homeLink) {
@@ -38,12 +38,6 @@ export const Navbar = ({ navOpen, setAnimationName }) => {
       lastActiveLink.current = homeLink;
       initActiveBox();
     }
-    initActiveBox();
-    window.addEventListener("resize", initActiveBox);
-
-    return () => {
-      window.removeEventListener("resize", initActiveBox);
-    };
   }, []);
 
   return (
@@ -54,9 +48,7 @@ export const Navbar = ({ navOpen, setAnimationName }) => {
           key={key}
           className={className}
           onClick={(event) => {
-            console.log('Link clicked:', label); // Add this to verify click
             activeCurrentLink(event);
-            console.log('Setting animation to:', animation.toLowerCase());
             setAnimationName(animation.toLowerCase());
           }}
           onPointerOver={() => setAnimationName(animation.toLowerCase())}

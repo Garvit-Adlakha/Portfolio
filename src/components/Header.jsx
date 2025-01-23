@@ -10,10 +10,11 @@ const Header = ({setAnimationName} ) => {
         <h1>
           <a href="/" className="logo">
             <img
-              src="/images/logo.webp"
+              src="/images/logo.png "
               width={40}
               height={40}
               alt="Garvit Adlakha Logo"
+              className="bg-zinc-900"
             />
           </a>
         </h1>
@@ -31,7 +32,7 @@ const Header = ({setAnimationName} ) => {
         <a
           href="#contact"
           className="btn btn-secondary max-md:hidden md:justify-self-end transition"
-          onPointerOver={() => setAnimationName('victory')}
+          onPointerOver={() => setAnimationName('salute')}
           onPointerOut={() => setAnimationName("idle")}
         >
           Contact me
