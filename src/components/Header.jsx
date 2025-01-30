@@ -10,11 +10,11 @@ const Header = ({setAnimationName} ) => {
         <h1>
           <a href="/" className="logo">
             <img
-              src="/images/logo.png "
+              src="/images/avatar.png "
               width={40}
               height={40}
               alt="Garvit Adlakha Logo"
-              className="bg-zinc-900"
+              className=""
             />
           </a>
         </h1>
