@@ -8,13 +8,13 @@ const Work = () => {
         {
           imgSrc: '/images/project-2.jpg',
           title: 'Retainicta Customer Churn',
-          tags: ['API', 'ML','web','xyz','zxyz'],
+          tags: ['API', 'ML','web'],
           projectLink: 'https://github.com/Garvit-Adlakha/Retainicta-Customer_Churn_Predictor'
         },
         {
           imgSrc: '/images/project-3.jpg',
           title: 'OptimalGo - optimal route',
-          tags: ['Development','xyz','zxyz','xyz','zxyz'],
+          tags: ['Development','core Java','DSA'],
           projectLink: 'https://github.com/Garvit-Adlakha/OptimalGo-Travel-Planner'
         },
         {
@@ -26,7 +26,7 @@ const Work = () => {
         {
           imgSrc: '/images/project-5.jpg',
           title: 'eCommerce website',
-          tags: ['eCommerce', 'Development'],
+          tags: ['eCommerce', 'Development',"MERN"],
           projectLink: 'https://github.com/Garvit-Adlakha/VougeVault_E-commerce'
         },
       ]; 

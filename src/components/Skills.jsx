@@ -34,6 +34,16 @@ const skillItem = [
     desc: 'Database'
   },
   {
+    imgSrc:'/images/MySql.svg',
+    label:"MySql",
+    desc:"Database"
+  },
+  {
+    imgSrc:'/images/java.svg',
+    label:"JAVA",
+    desc:"Language"
+  },
+  {
     imgSrc: '/images/react.svg',
     label: 'React',
     desc: 'Framework'
