@@ -40,11 +40,14 @@ const Hero = ({ animationName }) => {
             Building Scalable Modern Websites for the future.
           </h2>
           <div className="flex items-center gap-3">
-            <ButtonPrimary
-              label="Download CV"
-              icon="download"
-              href="https://drive.google.com/file/d/1bXMVwvAQaJUkktcEQPdo6d3td0wmpXyd/view?usp=sharing"
+          <ButtonPrimary
+         label="Download CV"
+          icon="download"
+          href="https://drive.google.com/file/d/17iAbYRhtNlGwthU5x0ecvkEQvrVCLMVx/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
             />
+
             <ButtonOutline
               href="#about"
               label="Scroll down"

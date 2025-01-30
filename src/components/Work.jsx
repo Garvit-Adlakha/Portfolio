@@ -1,6 +1,5 @@
 
 import { Card, HoverEffect } from "./Card";
-import ProjectCard from "./ProjectCard";
 
 
 const Work = () => {

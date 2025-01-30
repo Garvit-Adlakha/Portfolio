@@ -1,5 +1,4 @@
 import { cn } from "../libs/utils";
-
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from "react";
@@ -10,11 +9,11 @@ export const HoverEffect = ({
   className
 }) => {
   let [hoveredIndex, setHoveredIndex] = useState(null);
+
   return (
     <div className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10", className)}>
       {items.map((item, idx) => (
-        <Link
-          to={item?.projectLink}
+        <div
           key={item?.projectLink}
           className="relative group block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
@@ -37,16 +36,24 @@ export const HoverEffect = ({
               />
             )}
           </AnimatePresence>
-          <Card>
-              <figure className="aspect-square rounded-lg mb-4 overflow-hidden">
-            <CardImage imgSrc={item.imgSrc} />
-              </figure>
-            <div className="flex items-center justify-between gap-4">
-            <CardTitle>{item.title}</CardTitle>
-            <CardTags tags={item.tags} />
-            </div>
-          </Card>
-        </Link>
+            <a
+              href={item.projectLink}
+              target="_blank" // Open in new tab
+              rel="noopener noreferrer" // Security best practice
+              className="block h-full w-full"
+            >
+              <Card>
+                <figure className="aspect-square rounded-lg mb-4 overflow-hidden">
+                  <CardImage imgSrc={item.imgSrc} />
+                </figure>
+                <div className="flex items-center justify-between gap-4">
+                  <CardTitle>{item.title}</CardTitle>
+                  <CardTags tags={item.tags} />
+                </div>
+              </Card>
+            </a>
+          
+        </div>
       ))}
     </div>
   );
