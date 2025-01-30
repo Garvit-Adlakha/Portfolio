@@ -23,7 +23,7 @@ const Header = ({setAnimationName} ) => {
             className="menu-btn md:hidden"
             onClick={() => setNavOpen((prev)=> !prev)}
           >
-            <span className="material-symbols-rounded">
+            <span className="material-symbols-outlined">
               {navOpen ? 'close': 'menu'}
               </span>
           </button>
