@@ -62,7 +62,7 @@ const Skills = () => {
 
       <h2 className="headline-2 reveal-up">Essential tools i use</h2>
     <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
-        Discover th powerfl tools and technologies i use to create exceptional, high performing websites and applications.
+        Discover the powerfull tools and technologies i use to create exceptional, high performing websites and applications.
     </p>
     <div className="grid gap-3 grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))]">
       {

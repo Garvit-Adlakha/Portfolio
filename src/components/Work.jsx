@@ -5,25 +5,25 @@ import { Card, HoverEffect } from "./Card";
 const Work = () => {
     const works = [
         {
-          imgSrc: '/images/project-2.jpg',
+          imgSrc: '/images/churn.jpg',
           title: 'Retainicta Customer Churn',
           tags: ['API', 'ML','web'],
           projectLink: 'https://github.com/Garvit-Adlakha/Retainicta-Customer_Churn_Predictor'
         },
         {
-          imgSrc: '/images/project-3.jpg',
+          imgSrc: '/images/optimal.jpg',
           title: 'OptimalGo - optimal route',
           tags: ['Development','core Java','DSA'],
           projectLink: 'https://github.com/Garvit-Adlakha/OptimalGo-Travel-Planner'
         },
         {
-          imgSrc: '/images/project-4.jpg',
+          imgSrc: '/images/project-6.jpg',
           title: 'Licence Plate Detection',
           tags: ['ML','YOLO','Object detection','OCR'],
           projectLink: 'https://github.com/Garvit-Adlakha/Licence-Plate-Detection-using-YOLO'
         },
         {
-          imgSrc: '/images/project-5.jpg',
+          imgSrc: '/images/VogueVault.jpg',
           title: 'eCommerce website',
           tags: ['eCommerce', 'Development',"MERN"],
           projectLink: 'https://github.com/Garvit-Adlakha/VougeVault_E-commerce'
