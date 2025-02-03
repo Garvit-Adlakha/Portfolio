@@ -17,7 +17,7 @@ const Work = () => {
           projectLink: 'https://github.com/Garvit-Adlakha/OptimalGo-Travel-Planner'
         },
         {
-          imgSrc: '/images/project-6.jpg',
+          imgSrc: '/images/licence.png',
           title: 'Licence Plate Detection',
           tags: ['ML','YOLO','Object detection','OCR'],
           projectLink: 'https://github.com/Garvit-Adlakha/Licence-Plate-Detection-using-YOLO'
