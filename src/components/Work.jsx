@@ -24,7 +24,7 @@ const Work = () => {
         },
         {
           imgSrc: '/images/VogueVault.jpg',
-          title: 'eCommerce website',
+          title: 'VogueVault',
           tags: ['eCommerce', 'Development',"MERN"],
           projectLink: 'https://github.com/Garvit-Adlakha/VougeVault_E-commerce'
         },
