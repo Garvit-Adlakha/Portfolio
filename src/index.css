@@ -110,11 +110,7 @@ body{
 .canvas{
     @apply h-[600px] w-full p-0 ;
 }
-
-.headline-1{
-    @apply text-5xl leading-tight font-semibold lg:text-[55px] lg:leading-[1.15]
-}
-.headline-1, .headline-2{
+ .headline-2{
     @apply max-w-max;
     background: -webkit-linear-gradient(0deg, #fafafa, #f1f1f1); /* Use valid color codes */
     -webkit-background-clip: text;  /* Safari */
@@ -122,6 +118,14 @@ body{
     background-clip: text;          /* Standard property */
     -webkit-text-fill-color: transparent; /* Safari */
 }
+.headline-1 {
+  @apply text-5xl font-semibold leading-tight lg:text-[55px] lg:leading-[1.15] ;
+  background: linear-gradient(90deg, #f3f4f6, #e5e7eb); /* Soft and professional gradient */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .headline-2{
     @apply text-3xl lg:text-4xl lg:leading-tight font-semibold
 }
