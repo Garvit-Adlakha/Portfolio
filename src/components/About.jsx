@@ -8,9 +8,9 @@ const About = () => {
     >
         <div className="container">
             <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 reveal-up">
-            <p className="text-zinc-300 mb-4 md:mb-8 md:text-xl md:max-w-[60ch]">
-            Hello! I'm Garvit Adlakha, a passionate and versatile Full Stack Developer with expertise in building efficient, scalable, and user-friendly web applications. With a strong foundation in the MERN stack (MongoDB, Express.js, React.js, Node.js), I thrive on creating seamless user experiences and robust backend systems.
-            </p>
+            <p className="text-zinc-300 mb-4 md:mb-8 md:text-xl  md:text-center">
+
+            Hello! I'm Garvit Adlakha, a Full Stack Developer with expertise in the MERN stack and Tailwind CSS. I specialize in building scalable, user-friendly applications with seamless UI/UX and robust backend systems.Passionate about problem-solving and performance-driven development, I thrive on transforming ideas into high-impact applications. Let’s build something amazing together! 🚀            </p>
             <div className=""></div>
             </div>
         </div>
