@@ -104,7 +104,7 @@ export const CardImage = ({ imgSrc }) => {
     <img
       src={imgSrc}
       alt="Project"
-      className="w-full h-full object-cover rounded-xl"
+      className="w-full h-full object-contain rounded-xl"
     />
   );
 };

@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState,lazy } from "react";
 import Modal from "react-modal";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { OrbitControls } from "@react-three/drei";
-import Developer from "./Developer";
-import CanvasLoader from "./CanvasLoader";
 import PropTypes from "prop-types";
 import { ButtonPrimary, ButtonOutline } from "./Button";
+
+const Developer=lazy(()=>import("./Developer"));
+const CanvasLoader=lazy(()=>import("./CanvasLoader"));
 
 // Ensure the modal is accessible
 Modal.setAppElement('#root'); // Assuming your root element has the id 'root'

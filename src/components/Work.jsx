@@ -28,6 +28,12 @@ const Work = () => {
           tags: ['eCommerce', 'Development',"MERN"],
           projectLink: 'https://github.com/Garvit-Adlakha/VougeVault_E-commerce'
         },
+        {
+          imgSrc:'/images/WhisperWire.png',
+          title:'WhisperWire',
+          tags:['Sockets','MERN',"Chat App"],
+          projectLink:'https://whisperwire-main.vercel.app/'
+        }
       ]; 
   return (
     <section

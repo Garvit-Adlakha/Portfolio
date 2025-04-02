@@ -1,16 +1,20 @@
 import { BrowserRouter as Router } from 'react-router-dom';
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Work from "./components/Work";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy } from "react";
 import { ReactLenis } from "lenis/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+
+const Header=lazy(()=>import("./components/Header"));
+const Hero=lazy(()=>import("./components/Hero"));
+const About=lazy(()=>import("./components/About"));
+const Skills=lazy(()=>import("./components/Skills"));
+const Work=lazy(()=>import("./components/Work"));
+const Contact=lazy(()=>import("./components/Contact"));
+const Footer=lazy(()=>import("./components/Footer"));
+
+
 
 gsap.registerPlugin(ScrollTrigger);
 

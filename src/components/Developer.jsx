@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useAnimations, useFBX, useGLTF } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
-import * as Three from 'three'
+
+
+
 //models
-import Mobile from './Mobile'
+
 
 
 const Developer = ({ animationName = 'idle', ...props }) => {
   const group = useRef()
   const { nodes, materials } = useGLTF('/models/human/677ff836291d1c6abcf191f0.glb')
-  const mobile=useGLTF('/models/human/low_poly_mobile_phone.glb')
   const [mixer,setMixer]=useState(null)
 
 
