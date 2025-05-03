@@ -33,6 +33,12 @@ const Work = () => {
           title:'WhisperWire',
           tags:['Sockets','MERN',"Chat App"],
           projectLink:'https://whisperwire-main.vercel.app/'
+        },
+        {
+          imgSrc:"/images/MentorMatrix.png",
+          title:"MentorMatrix",
+          tags:['Development','MERN','Sockets','DL'],
+          projectLink:"https://github.com/Garvit-Adlakha/MentorMatrix"
         }
       ]; 
   return (
