@@ -19,7 +19,15 @@ const Footer=lazy(()=>import("./components/Footer"));
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-  const [animationName, setAnimationName] = useState("idle");
+  const [animationName, setAnimationName] = useState("waving");
+
+  useEffect(() => {
+    const wavingTimer = setTimeout(() => {
+      setAnimationName("idle");
+    }, 4000); 
+
+    return () => clearTimeout(wavingTimer);
+  }, []);
 
   useEffect(() => {
     const elements = gsap.utils.toArray(".reveal-up");

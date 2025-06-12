@@ -1,33 +1,74 @@
-
 import SkillCard from "./SkillCard";
 
 
 const skillItem = [
-  {
-    imgSrc: '/images/figma.svg',
-    label: 'Figma',
-    desc: 'Design tool'
-  },
-  {
-    imgSrc: '/images/css3.svg',
-    label: 'CSS',
-    desc: 'User Interface'
-  },
+  // Languages
   {
     imgSrc: '/images/javascript.svg',
     label: 'JavaScript',
     desc: 'Interaction'
   },
   {
+    imgSrc:'/images/typescript.svg',
+    label:'TypeScript',
+    desc:'Language'
+  },
+  {
+    imgSrc:'/images/python.svg',
+    label:'Python',
+    desc:'Language'
+  },
+  {
+    imgSrc:'/images/java.svg',
+    label:"JAVA",
+    desc:"Language"
+  },
+  
+  // Frontend Frameworks & Libraries
+  {
+    imgSrc: '/images/react.svg',
+    label: 'React',
+    desc: 'Frontend Framework'
+  },
+  {
+    imgSrc:'/images/nextjs_logo_dark.svg',
+    label:'NextJS',
+    desc:'Frontend Framework'
+  },
+  {
+    imgSrc: '/images/tailwindcss.svg',
+    label: 'TailwindCSS',
+    desc: 'User Interface'
+  },
+  {
+    imgSrc: '/images/css3.svg',
+    label: 'CSS',
+    desc: 'User Interface'
+  },
+  
+  // Backend Frameworks & Runtime
+  {
     imgSrc: '/images/nodejs.svg',
     label: 'NodeJS',
-    desc: 'Web Server'
+    desc: 'Backend'
   },
   {
     imgSrc: '/images/expressjs.svg',
     label: 'ExpressJS',
-    desc: 'Node Framework'
+    desc: 'Backend Framework'
   },
+  {
+    imgSrc:'/images/nestjs.svg',
+    label:'NestJS',
+    desc:'Backend Framework'
+  },
+  {
+    imgSrc:'/images/django.svg',
+    label:'Django',
+    desc:'Framework'
+  },
+  
+  // Databases
   {
     imgSrc: '/images/mongodb.svg',
     label: 'MongoDB',
@@ -39,20 +80,32 @@ const skillItem = [
     desc:"Database"
   },
   {
-    imgSrc:'/images/java.svg',
-    label:"JAVA",
-    desc:"Language"
+    imgSrc:'/images/postgresql.svg',
+    label:'PostgreSQL',
+    desc:'Database'
   },
   {
-    imgSrc: '/images/react.svg',
-    label: 'React',
-    desc: 'Framework'
+    imgSrc:'/images/redis.svg',
+    label:'Redis',
+    desc:'Database'
+  },
+  // Development Tools
+  {
+    imgSrc:'/images/git.svg',
+    label:'Git',
+    desc:'Version Control'
   },
   {
-    imgSrc: '/images/tailwindcss.svg',
-    label: 'TailwindCSS',
-    desc: 'User Interface'
+    imgSrc:'/images/docker.svg',
+    label:'Docker',
+    desc:'Containerization'
   },
+  {
+    imgSrc: '/images/figma.svg',
+    label: 'Figma',
+    desc: 'Design tool'
+  },
+  
 ];
 
 const Skills = () => {
