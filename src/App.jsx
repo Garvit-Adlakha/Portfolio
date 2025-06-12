@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     const wavingTimer = setTimeout(() => {
       setAnimationName("idle");
-    }, 4000); 
+    }, 5000); 
 
     return () => clearTimeout(wavingTimer);
   }, []);
