@@ -31,7 +31,7 @@ const Header = ({setAnimationName} ) => {
         </div>
         <a
           href="#contact"
-          className="btn btn-secondary max-md:hidden md:justify-self-end transition"
+          className="btn btn-secondary max-md:hidden md:justify-self-end transition ring-1 ring-inset ring-zinc-900 shadow-xl hover:shadow-md active:shadow-inner"
           onPointerOver={() => setAnimationName('salute')}
           onPointerOut={() => setAnimationName("idle")}
         >

@@ -110,7 +110,10 @@ const Contact = () => {
         name="message" 
         id="message"
         placeholder="Hi!"
-        className="text-field resize-y min-h-32 max-h-80 reveal-up" 
+        className="text-field resize-y  min-h-32 max-h-80 reveal-up overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-400 scrollbar-track-transparent " 
+        onWheel={(e) => {
+          e.stopPropagation();
+        }}
         ></textarea>
       </div>
       <button
