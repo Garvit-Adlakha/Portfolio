@@ -5,6 +5,13 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Garvit Adlakha's - portfolio</title>
+    
+    <!-- Performance optimizations -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#244855">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/images/photo.webp" as="image" type="image/webp">
     <link rel="preload" href="/models/human/677ff836291d1c6abcf191f0.glb" as="fetch" crossorigin="anonymous">
 
     <!-- 
@@ -22,7 +29,7 @@
 
 
     <!-- 
-    -Maerial Symbol rounded
+    -Material Symbol rounded
   -->
   <link
   rel="preload"
@@ -43,16 +50,27 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <script>
+      // Font loading optimization
       (async () => {
         try {
           await document.fonts.load("1em Material Symbols Outlined");
+          await document.fonts.load("1em Inter");
           document.documentElement.classList.remove("font-loading");
         } catch (error) {
           console.error("Failed to load fonts:", error);
-          // Fallback if fonts fail to load
           document.documentElement.classList.remove("font-loading");
         }
       })();
+      
+      // Performance monitoring
+      if ('performance' in window) {
+        window.addEventListener('load', () => {
+          setTimeout(() => {
+            const perf = performance.getEntriesByType('navigation')[0];
+            console.log('Page load time:', perf.loadEventEnd - perf.fetchStart, 'ms');
+          }, 0);
+        });
+      }
     </script>
   </body>
 </html>

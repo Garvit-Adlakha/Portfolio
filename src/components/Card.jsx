@@ -1,8 +1,7 @@
 import { cn } from "../libs/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { Link, useNavigate } from 'react-router-dom';
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export const HoverEffect = ({
   items,
@@ -11,48 +10,66 @@ export const HoverEffect = ({
   let [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <div className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10", className)}>
+    <div className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-10", className)}>
       {items.map((item, idx) => (
         <div
           key={item?.projectLink}
-          className="relative group block p-2 h-full w-full"
+          className="relative group h-full w-full transition-transform duration-200 hover:-translate-y-2"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
-              <motion.span
-                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-zinc-800/25 block rounded-3xl"
+              <motion.div
+                className="absolute -inset-2 bg-gradient-to-r from-cyan-400/10 to-blue-400/10 rounded-3xl blur-sm"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
-                animate={{
-                  opacity: 1,
-                  transition: { duration: 0.15 },
-                }}
-                exit={{
-                  opacity: 0,
-                  transition: { duration: 0.15, delay: 0.2 },
-                }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.15 }}
               />
             )}
           </AnimatePresence>
-            <a
-              href={item.projectLink}
-              target="_blank" // Open in new tab
-              rel="noopener noreferrer" // Security best practice
-              className="block h-full w-full"
-            >
-              <Card>
-                <figure className="aspect-square rounded-lg mb-4 overflow-hidden">
-                  <CardImage imgSrc={item.imgSrc} />
-                </figure>
-                <div className="flex items-center justify-between gap-4">
-                  <CardTitle>{item.title}</CardTitle>
-                  <CardTags tags={item.tags} />
+          <a
+            href={item.projectLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block h-full w-full"
+          >
+            <Card>
+              {/* Image Container with Overlay */}
+              <div className="relative w-full h-56 overflow-hidden rounded-xl mb-6 group-hover:shadow-xl transition-shadow duration-200">
+                <img
+                  src={item.imgSrc}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  onError={(e) => {
+                    console.log('Image failed to load:', item.imgSrc);
+                    const fallbackSrc = item.imgSrc.replace('.webp', '.jpg');
+                    if (e.target.src !== fallbackSrc) {
+                      e.target.src = fallbackSrc;
+                    }
+                  }}
+                  loading="lazy"
+                />
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                
+                {/* Project Link Icon */}
+                <div className="absolute top-4 right-4 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
                 </div>
-              </Card>
-            </a>
-          
+              </div>
+
+              {/* Content Section */}
+              <div className="space-y-4">
+                <CardTitle>{item.title}</CardTitle>
+                <CardTags tags={item.tags} />
+              </div>
+            </Card>
+          </a>
         </div>
       ))}
     </div>
@@ -66,12 +83,15 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden bg-zinc-800/50 border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20 reveal-up",
+        "relative h-full w-full p-6 rounded-2xl bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 backdrop-blur-sm border border-zinc-700/50 transition-all duration-200 group-hover:border-zinc-500/50 group-hover:shadow-xl group-hover:shadow-cyan-500/5",
         className
       )}
     >
-      <div className="relative z-50">
-        <div className="p-4">{children}</div>
+      {/* Glass Effect Border */}
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+      
+      <div className="relative z-10">
+        {children}
       </div>
     </div>
   );
@@ -82,9 +102,12 @@ export const CardTitle = ({
   children
 }) => {
   return (
-    <h4 className={cn("text-zinc-100 font-bold tracking-wide mt-4", className)}>
+    <h3 className={cn(
+      "text-xl font-bold text-zinc-100 leading-tight tracking-tight group-hover:text-white transition-colors duration-200",
+      className
+    )}>
       {children}
-    </h4>
+    </h3>
   );
 };
 
@@ -93,29 +116,24 @@ export const CardDescription = ({
   children
 }) => {
   return (
-    <p className={cn("mt-8 text-zinc-400 tracking-wide leading-relaxed text-sm", className)}>
+    <p
+      className={cn(
+        "text-zinc-400 leading-relaxed text-sm group-hover:text-zinc-300 transition-colors duration-200",
+        className
+      )}
+    >
       {children}
     </p>
   );
 };
 
-export const CardImage = ({ imgSrc }) => {
-  return (
-    <img
-      src={imgSrc}
-      alt="Project"
-      className="w-full h-full object-contain rounded-xl"
-    />
-  );
-};
-
 export const CardTags = ({ tags }) => {
   return (
-    <div className="flex flex-wrap gap-2 mt-4">
+    <div className="flex flex-wrap gap-2">
       {tags.map((tag, index) => (
         <span
           key={index}
-          className="bg-[#90AEAD] text-zinc-950 text-xs px-2 py-1 rounded-full"
+          className="px-3 py-1.5 text-xs font-medium bg-gradient-to-r from-zinc-700/80 to-zinc-800/80 text-zinc-300 rounded-full border border-zinc-600/50 backdrop-blur-sm transition-all duration-200 hover:from-cyan-500/20 hover:to-blue-500/20 hover:border-cyan-400/50 hover:text-cyan-200"
         >
           {tag}
         </span>

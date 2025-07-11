@@ -18,11 +18,6 @@ const skillItem = [
     label:'Python',
     desc:'Language'
   },
-  {
-    imgSrc:'/images/java.svg',
-    label:"JAVA",
-    desc:"Language"
-  },
   
   // Frontend Frameworks & Libraries
   {
@@ -56,11 +51,6 @@ const skillItem = [
     imgSrc: '/images/expressjs.svg',
     label: 'ExpressJS',
     desc: 'Backend Framework'
-  },
-  {
-    imgSrc:'/images/nestjs.svg',
-    label:'NestJS',
-    desc:'Backend Framework'
   },
   {
     imgSrc:'/images/django.svg',
@@ -112,26 +102,25 @@ const Skills = () => {
   return (
     <section className="section">
       <div className="container">
-
-      <h2 className="headline-2 reveal-up">Essential tools i use</h2>
-    <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
-        Discover the powerfull tools and technologies i use to create exceptional, high performing websites and applications.
-    </p>
-    <div className="grid gap-3 grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))]">
-      {
-        skillItem.map(({imgSrc,label,desc},  key)=>(
-            <SkillCard 
-            key={key}
-              imgSrc={imgSrc}
-              label={label}
-              desc={desc}
-              classes="reveal-up"
-            />
-
-        ))
-      }
-    </div>
-  </div>
+        <div className="reveal-up">
+          <h2 className="headline-2">Essential tools I use</h2>
+          <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
+            Discover the powerful tools and technologies I use to create exceptional, high-performing websites and applications.
+          </p>
+        </div>
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+          {
+            skillItem.map(({imgSrc, label, desc}, key) => (
+              <SkillCard 
+                key={key}
+                imgSrc={imgSrc}
+                label={label}
+                desc={desc}
+              />
+            ))
+          }
+        </div>
+      </div>
     </section>
   )
 }

@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useMemo } from 'react'
+import React, { useEffect, useRef, useMemo, Suspense } from 'react'
 import { useAnimations, useFBX, useGLTF } from '@react-three/drei'
-//models
+
 const Developer = ({ animationName = 'idle', ...props }) => {
   const group = useRef()
   const { nodes, materials } = useGLTF('/models/human/677ff836291d1c6abcf191f0.glb')
 
-  // Load all animations
+  // Lazy load animations only when needed
   const { animations: idleAnimation } = useFBX('/models/human/Breathing idle.fbx')
   const { animations: saluteAnimation } = useFBX('/models/human/salute.fbx')
   const { animations: wavingAnimation } = useFBX('/models/human/Waving.fbx')
@@ -41,23 +41,20 @@ const Developer = ({ animationName = 'idle', ...props }) => {
       processAnimationTracks(salute)
       anims.push(salute)
     }
+    
     if (wavingAnimation?.[0]) {
       const waving = wavingAnimation[0]
       waving.name = 'waving'
       processAnimationTracks(waving)
       anims.push(waving)
-    } else {
-      console.warn('Waving animation failed to load')
     }
+    
     return anims
   }, [idleAnimation, saluteAnimation, wavingAnimation])
 
   const { actions } = useAnimations(animations, group)
 
   useEffect(() => {
-    console.log(`Attempting to play animation: ${animationName}`)
-    console.log('Available actions:', Object.keys(actions))
-    
     // Stop all animations first
     Object.values(actions).forEach(action => {
       if (action) {
@@ -67,27 +64,35 @@ const Developer = ({ animationName = 'idle', ...props }) => {
 
     // Play the requested animation if it exists
     if (actions[animationName]) {
-      console.log(`Playing animation: ${animationName}`)
       actions[animationName]
         .reset()
-        .setLoop(animationName === 'waving' ? 2205 : 2205, Infinity) // THREE.LoopRepeat = 2205
-        .fadeIn(0.5)
+        .setLoop(2201, Infinity) // Use LoopRepeat constant
+        .fadeIn(0.3) // Faster fade for better performance
         .play()
-    } else {
+    } else if (actions['idle']) {
       // Fallback to idle if animation doesn't exist
-      console.warn(`Animation "${animationName}" not found, falling back to idle`)
-      if (actions['idle']) {
-        actions['idle'].reset().fadeIn(0.5).play()
-      }
+      actions['idle'].reset().fadeIn(0.3).play()
     }
 
     // Cleanup function
     return () => {
       if (actions[animationName]) {
-        actions[animationName].fadeOut(0.5)
+        actions[animationName].fadeOut(0.2)
       }
     }
   }, [animationName, actions])
+
+  // Optimize material properties for better performance
+  const optimizedMaterials = useMemo(() => {
+    const mats = { ...materials }
+    Object.values(mats).forEach(material => {
+      if (material) {
+        material.matcap = null
+        material.envMapIntensity = 0.5
+      }
+    })
+    return mats
+  }, [materials])
 
   return (
     <group {...props} dispose={null} ref={group}>
@@ -95,70 +100,80 @@ const Developer = ({ animationName = 'idle', ...props }) => {
       <skinnedMesh
         name="EyeLeft"
         geometry={nodes.EyeLeft.geometry}
-        material={materials.Wolf3D_Eye}
+        material={optimizedMaterials.Wolf3D_Eye}
         skeleton={nodes.EyeLeft.skeleton}
         morphTargetDictionary={nodes.EyeLeft.morphTargetDictionary}
         morphTargetInfluences={nodes.EyeLeft.morphTargetInfluences}
+        frustumCulled={false}
       />
       <skinnedMesh
         name="EyeRight"
         geometry={nodes.EyeRight.geometry}
-        material={materials.Wolf3D_Eye}
+        material={optimizedMaterials.Wolf3D_Eye}
         skeleton={nodes.EyeRight.skeleton}
         morphTargetDictionary={nodes.EyeRight.morphTargetDictionary}
         morphTargetInfluences={nodes.EyeRight.morphTargetInfluences}
+        frustumCulled={false}
       />
       <skinnedMesh
         name="Wolf3D_Head"
         geometry={nodes.Wolf3D_Head.geometry}
-        material={materials.Wolf3D_Skin}
+        material={optimizedMaterials.Wolf3D_Skin}
         skeleton={nodes.Wolf3D_Head.skeleton}
         morphTargetDictionary={nodes.Wolf3D_Head.morphTargetDictionary}
         morphTargetInfluences={nodes.Wolf3D_Head.morphTargetInfluences}
+        frustumCulled={false}
       />
       <skinnedMesh
         name="Wolf3D_Teeth"
         geometry={nodes.Wolf3D_Teeth.geometry}
-        material={materials.Wolf3D_Teeth}
+        material={optimizedMaterials.Wolf3D_Teeth}
         skeleton={nodes.Wolf3D_Teeth.skeleton}
         morphTargetDictionary={nodes.Wolf3D_Teeth.morphTargetDictionary}
         morphTargetInfluences={nodes.Wolf3D_Teeth.morphTargetInfluences}
+        frustumCulled={false}
       />
       <skinnedMesh
         geometry={nodes.Wolf3D_Hair.geometry}
-        material={materials.Wolf3D_Hair}
+        material={optimizedMaterials.Wolf3D_Hair}
         skeleton={nodes.Wolf3D_Hair.skeleton}
+        frustumCulled={false}
       />
       <skinnedMesh
         geometry={nodes.Wolf3D_Glasses.geometry}
-        material={materials.Wolf3D_Glasses}
+        material={optimizedMaterials.Wolf3D_Glasses}
         skeleton={nodes.Wolf3D_Glasses.skeleton}
+        frustumCulled={false}
       />
       <skinnedMesh
         geometry={nodes.Wolf3D_Outfit_Top.geometry}
-        material={materials.Wolf3D_Outfit_Top}
+        material={optimizedMaterials.Wolf3D_Outfit_Top}
         skeleton={nodes.Wolf3D_Outfit_Top.skeleton}
+        frustumCulled={false}
       />
       <skinnedMesh
         geometry={nodes.Wolf3D_Outfit_Bottom.geometry}
-        material={materials.Wolf3D_Outfit_Bottom}
+        material={optimizedMaterials.Wolf3D_Outfit_Bottom}
         skeleton={nodes.Wolf3D_Outfit_Bottom.skeleton}
+        frustumCulled={false}
       />
       <skinnedMesh
         geometry={nodes.Wolf3D_Outfit_Footwear.geometry}
-        material={materials.Wolf3D_Outfit_Footwear}
+        material={optimizedMaterials.Wolf3D_Outfit_Footwear}
         skeleton={nodes.Wolf3D_Outfit_Footwear.skeleton}
+        frustumCulled={false}
       />
       <skinnedMesh
         geometry={nodes.Wolf3D_Body.geometry}
-        material={materials.Wolf3D_Body}
+        material={optimizedMaterials.Wolf3D_Body}
         skeleton={nodes.Wolf3D_Body.skeleton}
+        frustumCulled={false}
       />
     </group>
   )
 }
 
-// Preload all models for better performance
+// Preload critical model only
 useGLTF.preload('/models/human/677ff836291d1c6abcf191f0.glb')
 
 export default Developer;

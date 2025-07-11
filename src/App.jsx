@@ -1,20 +1,16 @@
-import { BrowserRouter as Router } from 'react-router-dom';
-
-import { useState, useEffect, lazy } from "react";
+import { useState, useEffect } from "react";
 import { ReactLenis } from "lenis/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-
-const Header=lazy(()=>import("./components/Header"));
-const Hero=lazy(()=>import("./components/Hero"));
-const About=lazy(()=>import("./components/About"));
-const Skills=lazy(()=>import("./components/Skills"));
-const Work=lazy(()=>import("./components/Work"));
-const Contact=lazy(()=>import("./components/Contact"));
-const Footer=lazy(()=>import("./components/Footer"));
-
-
+// Import components directly (no lazy loading for single page)
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Skills from "./components/Skills";
+import Work from "./components/Work";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,40 +27,46 @@ function App() {
 
   useEffect(() => {
     const elements = gsap.utils.toArray(".reveal-up");
+    if (elements.length === 0) return;
+
     elements.forEach((element) => {
       gsap.fromTo(
         element,
-        { y: 100, opacity: 0 },
+        { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1,
+          duration: 0.8,
           ease: "power2.out",
           scrollTrigger: {
             trigger: element,
-            start: "top 80%", // Trigger when element enters 80% of the viewport
-            end: "bottom 20%", // Trigger until element leaves 20% of the viewport
-            scrub: true,
+            start: "top 85%",
+            end: "top 20%",
+            toggleActions: "play none none reverse",
+            // Removed 'once: true' to allow repeated animations
           },
         }
       );
     });
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   return (
-    <Router>
-      <ReactLenis root>
-        <Header setAnimationName={setAnimationName} />
-        <main>
-          <Hero animationName={animationName} />
-          <About />
-          <Skills />
-          <Work />
-          <Contact />
-        </main>
-        <Footer />
-      </ReactLenis>
-    </Router>
+    <ReactLenis root>
+      <Header setAnimationName={setAnimationName} />
+      <main>
+        <Hero animationName={animationName} />
+        <About />
+        <Skills />
+        <Work />
+        <Contact />
+      </main>
+      <Footer />
+    </ReactLenis>
   );
 }
 

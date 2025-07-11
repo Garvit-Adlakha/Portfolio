@@ -6,6 +6,8 @@ import { OrbitControls } from "@react-three/drei";
 import PropTypes from "prop-types";
 import { ButtonPrimary } from "./Button";
 import { Link } from "react-scroll";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Developer = lazy(() => import("./Developer"));
 const CanvasLoader = lazy(() => import("./CanvasLoader"));
@@ -23,12 +25,13 @@ const Hero = ({ animationName }) => {
     <section id="home" className="pt-28 lg:pt-20 bg-[#244855]">
       <div className="container items-center lg:grid lg:grid-cols-2 lg:gap-10">
         <div className="">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 reveal-up">
             <figure className="img-box w-10 h-10 rounded-lg cursor-pointer" onClick={openModal}>
-              <img
-                src="/images/photo.jpg"
+              <LazyLoadImage
+                src="/images/photo.webp"
                 alt="Garvit Adlakha's portrait"
                 className="img-cover bg-[#244855]"
+                effect="blur"
               />
             </figure>
             <div className="flex items-center gap-1.5 text-zinc-400 text-sm tracking-wide">
@@ -38,7 +41,7 @@ const Hero = ({ animationName }) => {
               Available for work
             </div>
           </div>
-          <h2 className="headline-1 max-w-[15ch] sm:max-w-[20ch] lg:max-w-[15ch] mt-5 mb-8 lg:mb-10">
+          <h2 className="headline-1 max-w-[15ch] sm:max-w-[20ch] lg:max-w-[15ch] mt-5 mb-8 lg:mb-10 reveal-up">
 Crafting Digital Experiences, from Concept to Code.
 </h2>
 
@@ -66,7 +69,7 @@ Crafting Digital Experiences, from Concept to Code.
             </Link>
           </div>
         </div>
-        <div className="canvas hidden lg:block">
+        <div className="canvas hidden lg:block reveal-up">
           <Canvas className="w-full max-w-[480px] ml-auto bg-gradient-to-t from-zinc-800/25 via-zinc-800/50 to-65% rounded-[60px] overflow-hidden">
             <ambientLight intensity={0.5} />
             <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
@@ -88,10 +91,11 @@ Crafting Digital Experiences, from Concept to Code.
         overlayClassName="overlay"
       >
         <div className="flex justify-center items-center h-full">
-          <img
-            src="/images/photo.jpg"
+          <LazyLoadImage
+            src="/images/photo.webp"
             alt="Garvit Adlakha's portrait"
             className="max-w-full max-h-full"
+            effect="blur"
           />
         </div>
         <button onClick={closeModal} className="close-button material-symbols-outlined">
@@ -101,9 +105,7 @@ Crafting Digital Experiences, from Concept to Code.
     </section>
   );
 };
-<span class="material-symbols-outlined">
-close
-</span>
+
 Hero.propTypes = {
   animationName: PropTypes.string.isRequired,
 };

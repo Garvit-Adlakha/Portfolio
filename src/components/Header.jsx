@@ -11,7 +11,8 @@ const Header = ({setAnimationName} ) => {
         <h1>
           <a href="/" className="logo">
             <img
-              src="/images/avatar.png "
+              src="/images/avatar.webp"
+              effect="blur"
               width={100}
               height={100}
               alt="Garvit Adlakha Logo"
