@@ -1,22 +1,13 @@
 import React, { useEffect, useRef, useMemo } from 'react'
 import { useAnimations, useFBX, useGLTF } from '@react-three/drei'
-
-
-
 //models
-
-
-
 const Developer = ({ animationName = 'idle', ...props }) => {
   const group = useRef()
   const { nodes, materials } = useGLTF('/models/human/677ff836291d1c6abcf191f0.glb')
 
   // Load all animations
-  const { animations: textingAnimation } = useFBX('/models/human/Texting While Standing.fbx')
   const { animations: idleAnimation } = useFBX('/models/human/Breathing idle.fbx')
   const { animations: saluteAnimation } = useFBX('/models/human/salute.fbx')
-  const { animations: clappingAnimation } = useFBX('/models/human/clapping.fbx')
-  const { animations: victoryAnimation } = useFBX('/models/human/victory.fbx')
   const { animations: wavingAnimation } = useFBX('/models/human/Waving.fbx')
 
   // Process animation tracks to remove mixamorig prefix
@@ -44,34 +35,12 @@ const Developer = ({ animationName = 'idle', ...props }) => {
       anims.push(idle)
     }
     
-    if (textingAnimation?.[0]) {
-      const texting = textingAnimation[0]
-      texting.name = 'texting'
-      processAnimationTracks(texting)
-      anims.push(texting)
-    }
-    
     if (saluteAnimation?.[0]) {
       const salute = saluteAnimation[0]
       salute.name = 'salute'
       processAnimationTracks(salute)
       anims.push(salute)
     }
-    
-    if (clappingAnimation?.[0]) {
-      const clapping = clappingAnimation[0]
-      clapping.name = 'clapping'
-      processAnimationTracks(clapping)
-      anims.push(clapping)
-    }
-    
-    if (victoryAnimation?.[0]) {
-      const victory = victoryAnimation[0]
-      victory.name = 'victory'
-      processAnimationTracks(victory)
-      anims.push(victory)
-    }
-    
     if (wavingAnimation?.[0]) {
       const waving = wavingAnimation[0]
       waving.name = 'waving'
@@ -81,7 +50,7 @@ const Developer = ({ animationName = 'idle', ...props }) => {
       console.warn('Waving animation failed to load')
     }
     return anims
-  }, [idleAnimation, textingAnimation, saluteAnimation, clappingAnimation, victoryAnimation, wavingAnimation])
+  }, [idleAnimation, saluteAnimation, wavingAnimation])
 
   const { actions } = useAnimations(animations, group)
 
@@ -191,11 +160,5 @@ const Developer = ({ animationName = 'idle', ...props }) => {
 
 // Preload all models for better performance
 useGLTF.preload('/models/human/677ff836291d1c6abcf191f0.glb')
-useFBX.preload('/models/human/Texting While Standing.fbx')
-useFBX.preload('/models/human/Breathing idle.fbx')
-useFBX.preload('/models/human/salute.fbx')
-useFBX.preload('/models/human/clapping.fbx')
-useFBX.preload('/models/human/victory.fbx')
-useFBX.preload('/models/human/Waving.fbx')
 
 export default Developer;

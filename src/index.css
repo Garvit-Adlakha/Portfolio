@@ -25,15 +25,16 @@ body{
     @apply opacity-100 scale-100 blur-0 visible;
 }
 .nav-link{
-    @apply grid items-center h-9 px-4 text-sm font-medium tracking-wide text-zinc-50/50 hover:text-zinc-50 transition-colors ;
+    @apply grid items-center h-9 px-4 text-sm font-medium tracking-wide text-zinc-400 hover:text-zinc-50 transition-colors;
     transition: all 0.3s ease
 }
 .nav-link.active {
-    @apply text-zinc-900 duration-500
+    @apply text-sky-400;
 }
 
 .navbar .active-box{
-    @apply absolute bg-zinc-50 rounded-lg  -z-10 transition-[top,left] duration-500
+    @apply absolute bg-zinc-50 rounded-lg -z-10;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 
@@ -41,7 +42,8 @@ body{
 
 
 .btn{
-    @apply max-w-max h-9 flex items-center gap-2 px-4 rounded-xl font-medium text-sm ring-1 ring-zinc-50/5 ring-inset transition-[background-color];
+    @apply max-w-max h-9 flex items-center gap-2 px-4 rounded-xl font-medium text-sm ring-1 ring-zinc-50/5 ring-inset transition-all duration-300;
+    box-shadow: 6px 6px 12px #1e3a47, -6px -6px 12px #2a5663;
 }
 .btn-secondary{
     @apply bg-zinc-50 text-zinc-900 active:bg-zinc-50/80;
@@ -69,14 +71,21 @@ body{
     @apply pr-3
 }
 
+
 .btn-primary{
-    @apply h-11 bg-[#90AEAD] text-zinc-950 hover:bg-sky-300 active:bg-sky-400
+    @apply h-11 bg-[#90AEAD] text-zinc-950 hover:bg-sky-300 active:bg-sky-400 text-sm;
+    box-shadow: 6px 6px 12px #1e3a47, -6px -6px 12px #2a5663;
 }
 
 .btn-outline{
-    @apply h-11 bg-zinc-800 hover:bg-zinc-700 active:bg-zinc-800 
+    @apply h-11 bg-zinc-800 hover:bg-zinc-700 active:bg-zinc-800 text-sm;
+    box-shadow: 6px 6px 12px #1e3a47, -6px -6px 12px #2a5663;
 }
 
+.font-loading .material-symbols-outlined {
+  color: transparent !important;
+  }
+  
 
 .label{
     @apply block text-zinc-200 text-sm font-normal mb-2
@@ -137,37 +146,38 @@ body{
 
  
 .canvas-loader-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.canvas-loader {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #3498db;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.canvas-loader-text {
+  color: #f1f1f1;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0);
+    opacity: 0.8;
   }
-  
-  .canvas-loader {
-    width: 40px;
-    height: 40px;
-    border: 4px solid #f1f1f1;
-    border-top: 4px solid #3498db;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+  100% {
+    transform: scale(1);
+    opacity: 0;
   }
-  
-  .canvas-loader-text {
-    font-size: 14px;
-    color: #f1f1f1;
-    font-weight: 800;
-    margin-top: 40px;
-  }
-  
-  /* Spinner Animation */
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+}
   
   .reveal-up{
     @apply translate-y-20 opacity-0

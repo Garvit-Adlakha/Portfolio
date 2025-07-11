@@ -1,13 +1,14 @@
-import { useState,lazy } from "react";
+import { useState, lazy } from "react";
 import Modal from "react-modal";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { OrbitControls } from "@react-three/drei";
 import PropTypes from "prop-types";
-import { ButtonPrimary, ButtonOutline } from "./Button";
+import { ButtonPrimary } from "./Button";
+import { Link } from "react-scroll";
 
-const Developer=lazy(()=>import("./Developer"));
-const CanvasLoader=lazy(()=>import("./CanvasLoader"));
+const Developer = lazy(() => import("./Developer"));
+const CanvasLoader = lazy(() => import("./CanvasLoader"));
 
 // Ensure the modal is accessible
 Modal.setAppElement('#root'); // Assuming your root element has the id 'root'
@@ -38,23 +39,31 @@ const Hero = ({ animationName }) => {
             </div>
           </div>
           <h2 className="headline-1 max-w-[15ch] sm:max-w-[20ch] lg:max-w-[15ch] mt-5 mb-8 lg:mb-10">
-  Engineering the Future, One Project at a Time.
+Crafting Digital Experiences, from Concept to Code.
 </h2>
 
           <div className="flex items-center gap-3">
           <ButtonPrimary
-         label="Download CV"
-          icon="download"
-          href="https://drive.google.com/file/d/1aZsumuY9o2H__W-hLXwcgGQ16CVwt1Fv/view?usp=sharing"
-          target="_blank"
-          rel="noopener noreferrer"
+           label="Download CV"
+           icon="download"
+           href="https://drive.google.com/file/d/1aZsumuY9o2H__W-hLXwcgGQ16CVwt1Fv/view?usp=sharing"
+           target="_blank"
+           rel="noopener noreferrer"
+           className="material-symbols-outlined btn btn-primary"
             />
 
-            <ButtonOutline
-              href="#about"
-              label="Scroll down"
-              icon="arrow_downward"
-            />
+            <Link
+              to="about"
+              spy={true}
+              smooth={true}
+              duration={500}
+              className="btn btn-outline"
+            >
+              More About Me
+              <span className="material-symbols-outlined" aria-hidden="true">
+                arrow_downward
+              </span>
+            </Link>
           </div>
         </div>
         <div className="canvas hidden lg:block">

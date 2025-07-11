@@ -1,5 +1,6 @@
 import { Navbar } from "./Navbar";
 import { useState } from "react";
+import { Link } from "react-scroll";
 
 const Header = ({setAnimationName} ) => {
   const [navOpen, setNavOpen] = useState(false);
@@ -11,10 +12,10 @@ const Header = ({setAnimationName} ) => {
           <a href="/" className="logo">
             <img
               src="/images/avatar.png "
-              width={40}
-              height={40}
+              width={100}
+              height={100}
               alt="Garvit Adlakha Logo"
-              className=""
+              className="h-10 w-auto"
             />
           </a>
         </h1>
@@ -29,14 +30,17 @@ const Header = ({setAnimationName} ) => {
           </button>
           <Navbar navOpen={navOpen} setAnimationName={setAnimationName} />
         </div>
-        <a
-          href="#contact"
+        <Link
+          to="contact"
+          spy={true}
+          smooth={true}
+          duration={500}
           className="btn btn-secondary max-md:hidden md:justify-self-end transition ring-1 ring-inset ring-zinc-900 shadow-xl hover:shadow-md active:shadow-inner"
           onPointerOver={() => setAnimationName('salute')}
           onPointerOut={() => setAnimationName("idle")}
         >
           Contact me
-        </a>
+        </Link>
       </div>
     </header>
   );
