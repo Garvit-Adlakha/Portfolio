@@ -2,6 +2,7 @@ import { cn } from "../libs/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import PropTypes from "prop-types";
+import ResponsiveImage from "./ResponsiveImage";
 
 export const HoverEffect = ({
   items,
@@ -39,18 +40,13 @@ export const HoverEffect = ({
             <Card>
               {/* Image Container with Overlay */}
               <div className="relative w-full h-56 overflow-hidden rounded-xl mb-6 group-hover:shadow-xl transition-shadow duration-200">
-                <img
+                <ResponsiveImage
                   src={item.imgSrc}
                   alt={item.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  onError={(e) => {
-                    console.log('Image failed to load:', item.imgSrc);
-                    const fallbackSrc = item.imgSrc.replace('.webp', '.jpg');
-                    if (e.target.src !== fallbackSrc) {
-                      e.target.src = fallbackSrc;
-                    }
-                  }}
-                  loading="lazy"
+                  imageType="project"
+                  variant="card"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />

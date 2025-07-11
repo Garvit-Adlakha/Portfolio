@@ -6,8 +6,7 @@ import { OrbitControls } from "@react-three/drei";
 import PropTypes from "prop-types";
 import { ButtonPrimary } from "./Button";
 import { Link } from "react-scroll";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
+import ResponsiveImage from "./ResponsiveImage";
 
 const Developer = lazy(() => import("./Developer"));
 const CanvasLoader = lazy(() => import("./CanvasLoader"));
@@ -27,11 +26,14 @@ const Hero = ({ animationName }) => {
         <div className="">
           <div className="flex items-center gap-3 reveal-up">
             <figure className="img-box w-10 h-10 rounded-lg cursor-pointer" onClick={openModal}>
-              <LazyLoadImage
+              <ResponsiveImage
                 src="/images/photo.webp"
                 alt="Garvit Adlakha's portrait"
                 className="img-cover bg-[#244855]"
-                effect="blur"
+                imageType="photo"
+                variant="thumb"
+                sizes="40px"
+                priority={true}
               />
             </figure>
             <div className="flex items-center gap-1.5 text-zinc-400 text-sm tracking-wide">
@@ -91,11 +93,13 @@ Crafting Digital Experiences, from Concept to Code.
         overlayClassName="overlay"
       >
         <div className="flex justify-center items-center h-full">
-          <LazyLoadImage
+          <ResponsiveImage
             src="/images/photo.webp"
             alt="Garvit Adlakha's portrait"
             className="max-w-full max-h-full"
-            effect="blur"
+            imageType="photo"
+            variant="large"
+            sizes="(max-width: 768px) 90vw, 60vw"
           />
         </div>
         <button onClick={closeModal} className="close-button material-symbols-outlined">

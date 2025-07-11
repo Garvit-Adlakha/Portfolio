@@ -115,3 +115,5 @@ out
 *.sln
 *.sw?
 DEPLOYMENT.md
+scripts/optimize-images.js
+IMAGE_OPTIMIZATION.md

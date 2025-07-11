@@ -1,6 +1,7 @@
 import { Navbar } from "./Navbar";
 import { useState } from "react";
 import { Link } from "react-scroll";
+import ResponsiveImage from "./ResponsiveImage";
 
 const Header = ({setAnimationName} ) => {
   const [navOpen, setNavOpen] = useState(false);
@@ -10,13 +11,14 @@ const Header = ({setAnimationName} ) => {
       <div className="max-w-screen-2xl w-full mx-auto px-4 flex justify-between items-center md:px-6 md:grid md:grid-cols-[1fr,3fr,1fr]">
         <h1>
           <a href="/" className="logo">
-            <img
+            <ResponsiveImage
               src="/images/avatar.webp"
-              effect="blur"
-              width={100}
-              height={100}
               alt="Garvit Adlakha Logo"
               className="h-10 w-auto"
+              imageType="avatar"
+              variant="default"
+              sizes="40px"
+              priority={true}
             />
           </a>
         </h1>
