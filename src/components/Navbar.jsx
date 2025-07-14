@@ -40,7 +40,7 @@ export const Navbar = ({ navOpen, setAnimationName }) => {
           spy={true}
           smooth={true}
           duration={500}
-          className={`nav-link ${className || ''}`}
+          className={`nav-link cursor-pointer ${className || ''}`}
           onSetActive={updateActiveBox}
           onPointerOver={() => setAnimationName(animation.toLowerCase())}
           onPointerOut={() => setAnimationName("idle")}

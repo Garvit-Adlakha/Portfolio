@@ -14,7 +14,7 @@ const Header = ({setAnimationName} ) => {
             <ResponsiveImage
               src="/images/avatar.webp"
               alt="Garvit Adlakha Logo"
-              className="h-10 w-auto"
+              className="h-10 w-auto bg-transparent transition duration-300 ease-in-out hover:scale-110"
               imageType="avatar"
               variant="default"
               sizes="40px"
