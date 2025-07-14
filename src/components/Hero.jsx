@@ -54,7 +54,7 @@ Crafting Digital Experiences, from Concept to Code.
            href="https://drive.google.com/file/d/1aZsumuY9o2H__W-hLXwcgGQ16CVwt1Fv/view?usp=sharing"
            target="_blank"
            rel="noopener noreferrer"
-           className="material-symbols-outlined btn btn-primary"
+           className="material-symbols-outlined btn btn-primary "
             />
 
             <Link
@@ -62,7 +62,7 @@ Crafting Digital Experiences, from Concept to Code.
               spy={true}
               smooth={true}
               duration={500}
-              className="btn btn-outline"
+              className="btn btn-outline cursor-pointer"
             >
               More About Me
               <span className="material-symbols-outlined" aria-hidden="true">
